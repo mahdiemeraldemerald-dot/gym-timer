@@ -1,0 +1,39 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'app.gymtimer'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId 'app.gymtimer'
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName '1.0'
+    }
+
+    // A fixed key so every build (Android Studio or GitHub) can update the installed app.
+    // This key is for installing on your own phone, not for publishing on Google Play.
+    signingConfigs {
+        release {
+            storeFile file('gym-timer.keystore')
+            storePassword 'gymtimer123'
+            keyAlias 'gymtimer'
+            keyPassword 'gymtimer123'
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.release
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
